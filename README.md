@@ -1,4 +1,9 @@
-# Distributed version of the Spring PetClinic Sample Application built with Spring Cloud [![Build Status](https://travis-ci.org/spring-petclinic/spring-petclinic-microservices.svg?branch=master)](https://travis-ci.org/spring-petclinic/spring-petclinic-microservices/)
+# Distributed version of the Spring PetClinic Sample Application built with Spring Cloud 
+
+[![Build Status](https://travis-ci.org/spring-petclinic/spring-petclinic-microservices.svg?branch=master)](https://travis-ci.org/spring-petclinic/spring-petclinic-microservices/)
+[![codecov](https://codecov.io/gh/spring-petclinic/spring-petclinic-microservices/branch/master/graph/badge.svg)](https://codecov.io/gh/jvm-bloggers/jvm-bloggers) 
+[![Version Eye](https://www.versioneye.com/user/projects/5798bd4874848d004b927ac7/badge.svg)](https://www.versioneye.com/user/projects/5798bd4874848d004b927ac7) 
+[![Sputnik](https://sputnik.ci/conf/badge)](https://sputnik.ci/app#/builds/spring-petclinic/spring-petclinic-microservices)
 
 This microservices branch was initially derived from [AngularJS version](https://github.com/spring-petclinic/spring-petclinic-angular1) to demonstrate how to split sample Spring application into [microservices](http://www.martinfowler.com/articles/microservices.html). To achieve that goal we used [Spring Cloud Netflix](https://github.com/spring-cloud/spring-cloud-netflix) technology stack.
 
