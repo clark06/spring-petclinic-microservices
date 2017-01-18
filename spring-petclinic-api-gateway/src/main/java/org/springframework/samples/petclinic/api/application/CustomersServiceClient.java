@@ -1,16 +1,14 @@
 package org.springframework.samples.petclinic.api.application;
 
-import static java.util.Arrays.asList;
-
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
 
 /**
@@ -28,8 +26,8 @@ public class CustomersServiceClient {
 
     @HystrixCommand(fallbackMethod = "getOwnersFallback")
     public OwnersList getOwners() {
-        final ResponseEntity<List<OwnerDescriptor>> response = loadBalancedRestTemplate.exchange("http://customers-service/owners",
-            HttpMethod.GET, null, new ParameterizedTypeReference<List<OwnerDescriptor>>() {});
+        final ResponseEntity<List<OwnerDetails>> response = loadBalancedRestTemplate.exchange("http://customers-service/owners",
+            HttpMethod.GET, null, new ParameterizedTypeReference<List<OwnerDetails>>() {});
         return OwnersList.of(response.getBody());
     }
 

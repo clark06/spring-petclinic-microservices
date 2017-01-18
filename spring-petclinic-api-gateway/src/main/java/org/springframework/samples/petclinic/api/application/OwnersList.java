@@ -9,11 +9,11 @@ import java.util.List;
 @Data
 public class OwnersList {
 
-    private final List<OwnerDescriptor> owners;
+    private final List<OwnerDetails> owners;
 
     private final boolean failure;
 
-    private OwnersList(List<OwnerDescriptor> owners, boolean failure) {
+    private OwnersList(List<OwnerDetails> owners, boolean failure) {
         this.owners = owners;
         this.failure = failure;
     }
@@ -22,7 +22,7 @@ public class OwnersList {
         return new OwnersList(null, true);
     }
 
-    public static OwnersList of(List<OwnerDescriptor> owners) {
+    public static OwnersList of(List<OwnerDetails> owners) {
         return new OwnersList(owners, false);
     }
 }

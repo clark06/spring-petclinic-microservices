@@ -4,7 +4,8 @@ angular.module('ownerList')
     .controller('OwnerListController', ['$http', function ($http) {
         var self = this;
 
-        $http.get('api/customer/owners').then(function (resp) {
-            self.owners = resp.data;
+        $http.get('api/gateway/owners').then(function (resp) {
+            self.failure = resp.data.failure;
+            self.owners = resp.data.owners;
         });
     }]);
