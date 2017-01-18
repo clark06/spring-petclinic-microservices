@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.api.application.CustomersServiceClient;
 import org.springframework.samples.petclinic.api.application.OwnerDetails;
+import org.springframework.samples.petclinic.api.application.OwnersList;
 import org.springframework.samples.petclinic.api.application.VisitDetails;
 import org.springframework.samples.petclinic.api.application.VisitsServiceClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class ApiGatewayController {
 
     private final VisitsServiceClient visitsServiceClient;
 
-    @GetMapping(value = "owners/{ownerId}")
+    @GetMapping("owners/{ownerId}")
     public OwnerDetails getOwnerDetails(final @PathVariable int ownerId) {
         final OwnerDetails owner = customersServiceClient.getOwner(ownerId);
         supplyVisits(owner, visitsServiceClient.getVisitsForPets(owner.getPetIds(), ownerId));
@@ -37,5 +38,10 @@ public class ApiGatewayController {
     private void supplyVisits(final OwnerDetails owner, final Map<Integer, List<VisitDetails>> visitsMapping) {
         owner.getPets().forEach(pet ->
             pet.getVisits().addAll(Optional.ofNullable(visitsMapping.get(pet.getId())).orElse(emptyList())));
+    }
+
+    @GetMapping("owners")
+    public OwnersList getOwnersList() {
+        return customersServiceClient.getOwners();
     }
 }
